@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MainDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MainDatabaseModelStoreContainer">
+    <EntitySet Name="hardDrives" EntityType="MainDatabaseModel.Store.hardDrives" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="normTeches" EntityType="MainDatabaseModel.Store.normTeches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="systemCharacteristics" EntityType="MainDatabaseModel.Store.systemCharacteristics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="technics" EntityType="MainDatabaseModel.Store.technics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employments" EntityType="MainDatabaseModel.Store.employments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="rooms" EntityType="MainDatabaseModel.Store.rooms" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="roomemployment" Association="MainDatabaseModel.Store.roomemployment">
+      <End Role="room" EntitySet="rooms" />
+      <End Role="employment" EntitySet="employments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="hardDrives">
+    <Key>
+      <PropertyRef Name="PCID" />
+    </Key>
+    <Property Name="PCID" Type="int" Nullable="false" />
+    <Property Name="company" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="serialNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="space" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="normTeches">
+    <Key>
+      <PropertyRef Name="techID" />
+      <PropertyRef Name="employID" />
+    </Key>
+    <Property Name="techID" Type="int" Nullable="false" />
+    <Property Name="employID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="systemCharacteristics">
+    <Key>
+      <PropertyRef Name="PCID" />
+    </Key>
+    <Property Name="PCID" Type="int" Nullable="false" />
+    <Property Name="processorName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="processorModel" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="RAM" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="capacity" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="operatingSystem" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="technics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="type" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="company" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="businessNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="serialNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="employments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="patronymic" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="room_employID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rooms">
+    <Key>
+      <PropertyRef Name="employID" />
+    </Key>
+    <Property Name="employID" Type="int" Nullable="false" />
+    <Property Name="roomNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="roomemployment">
+    <End Role="room" Type="MainDatabaseModel.Store.rooms" Multiplicity="1" />
+    <End Role="employment" Type="MainDatabaseModel.Store.employments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="employID" />
+      </Principal>
+      <Dependent Role="employment">
+        <PropertyRef Name="room_employID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MainDatabaseModelStoreContainer" CdmEntityContainer="MainDatabaseEntities">
+    <EntitySetMapping Name="hardDrives">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.hardDrive)">
+        <MappingFragment StoreEntitySet="hardDrives">
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="space" ColumnName="space" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="normTeches">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.normTech)">
+        <MappingFragment StoreEntitySet="normTeches">
+          <ScalarProperty Name="techID" ColumnName="techID" />
+          <ScalarProperty Name="employID" ColumnName="employID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="systemCharacteristics">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.systemCharacteristic)">
+        <MappingFragment StoreEntitySet="systemCharacteristics">
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="processorName" ColumnName="processorName" />
+          <ScalarProperty Name="processorModel" ColumnName="processorModel" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technics">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.technic)">
+        <MappingFragment StoreEntitySet="technics">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="businessNumber" ColumnName="businessNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employments">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.employment)">
+        <MappingFragment StoreEntitySet="employments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.room)">
+        <MappingFragment StoreEntitySet="rooms">
+          <ScalarProperty Name="employID" ColumnName="employID" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="roomemployment" TypeName="MainDatabaseModel.roomemployment" StoreEntitySet="employments">
+      <EndProperty Name="room">
+        <ScalarProperty Name="employID" ColumnName="room_employID" />
+      </EndProperty>
+      <EndProperty Name="employment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

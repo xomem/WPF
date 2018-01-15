@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MainDatabaseModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MainDatabaseModelStoreContainer">
+    <EntitySet Name="hardDrives" EntityType="MainDatabaseModel.Store.hardDrives" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="normTeches" EntityType="MainDatabaseModel.Store.normTeches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="systemCharacteristics" EntityType="MainDatabaseModel.Store.systemCharacteristics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="technics" EntityType="MainDatabaseModel.Store.technics" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employments" EntityType="MainDatabaseModel.Store.employments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="rooms" EntityType="MainDatabaseModel.Store.rooms" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="roomemployment" Association="MainDatabaseModel.Store.roomemployment">
+      <End Role="room" EntitySet="rooms" />
+      <End Role="employment" EntitySet="employments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="hardDrives">
+    <Key>
+      <PropertyRef Name="PCID" />
+    </Key>
+    <Property Name="PCID" Type="int" Nullable="false" />
+    <Property Name="company" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="serialNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="space" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="normTeches">
+    <Key>
+      <PropertyRef Name="techID" />
+      <PropertyRef Name="employID" />
+    </Key>
+    <Property Name="techID" Type="int" Nullable="false" />
+    <Property Name="employID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="systemCharacteristics">
+    <Key>
+      <PropertyRef Name="PCID" />
+    </Key>
+    <Property Name="PCID" Type="int" Nullable="false" />
+    <Property Name="processorName" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="processorModel" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="RAM" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="capacity" Type="nchar" Nullable="true" MaxLength="10" />
+    <Property Name="operatingSystem" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="technics">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="type" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="company" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="businessNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="serialNumber" Type="nvarchar" Nullable="true" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="employments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="patronymic" Type="nvarchar" Nullable="true" MaxLength="50" />
+    <Property Name="room_employID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="rooms">
+    <Key>
+      <PropertyRef Name="employID" />
+    </Key>
+    <Property Name="employID" Type="int" Nullable="false" />
+    <Property Name="roomNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <Association Name="roomemployment">
+    <End Role="room" Type="MainDatabaseModel.Store.rooms" Multiplicity="1" />
+    <End Role="employment" Type="MainDatabaseModel.Store.employments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="room">
+        <PropertyRef Name="employID" />
+      </Principal>
+      <Dependent Role="employment">
+        <PropertyRef Name="room_employID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MainDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hardDrive">
+          <Key>
+            <PropertyRef Name="PCID" />
+          </Key>
+          <Property Name="PCID" Type="Int32" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="serialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="space" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="normTech">
+          <Key>
+            <PropertyRef Name="techID" />
+            <PropertyRef Name="employID" />
+          </Key>
+          <Property Name="techID" Type="Int32" Nullable="false" />
+          <Property Name="employID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="systemCharacteristic">
+          <Key>
+            <PropertyRef Name="PCID" />
+          </Key>
+          <Property Name="PCID" Type="Int32" Nullable="false" />
+          <Property Name="processorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="processorModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAM" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="capacity" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="operatingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="technic">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="businessNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="serialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MainDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hardDrives" EntityType="Self.hardDrive" />
+          <EntitySet Name="normTeches" EntityType="Self.normTech" />
+          <EntitySet Name="systemCharacteristics" EntityType="Self.systemCharacteristic" />
+          <EntitySet Name="technics" EntityType="Self.technic" />
+          <EntitySet Name="employments" EntityType="MainDatabaseModel.employment" />
+          <EntitySet Name="rooms" EntityType="MainDatabaseModel.room" />
+          <AssociationSet Name="roomemployment" Association="MainDatabaseModel.roomemployment">
+            <End Role="room" EntitySet="rooms" />
+            <End Role="employment" EntitySet="employments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="employment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="room" Relationship="MainDatabaseModel.roomemployment" FromRole="employment" ToRole="room" />
+        </EntityType>
+        <EntityType Name="room">
+          <Key>
+            <PropertyRef Name="employID" />
+          </Key>
+          <Property Name="employID" Type="Int32" Nullable="false" />
+          <Property Name="roomNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employments" Relationship="MainDatabaseModel.roomemployment" FromRole="room" ToRole="employment" />
+        </EntityType>
+        <Association Name="roomemployment">
+          <End Type="MainDatabaseModel.room" Role="room" Multiplicity="1" />
+          <End Type="MainDatabaseModel.employment" Role="employment" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MainDatabaseModelStoreContainer" CdmEntityContainer="MainDatabaseEntities">
+    <EntitySetMapping Name="hardDrives">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.hardDrive)">
+        <MappingFragment StoreEntitySet="hardDrives">
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="space" ColumnName="space" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="normTeches">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.normTech)">
+        <MappingFragment StoreEntitySet="normTeches">
+          <ScalarProperty Name="techID" ColumnName="techID" />
+          <ScalarProperty Name="employID" ColumnName="employID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="systemCharacteristics">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.systemCharacteristic)">
+        <MappingFragment StoreEntitySet="systemCharacteristics">
+          <ScalarProperty Name="PCID" ColumnName="PCID" />
+          <ScalarProperty Name="processorName" ColumnName="processorName" />
+          <ScalarProperty Name="processorModel" ColumnName="processorModel" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="capacity" ColumnName="capacity" />
+          <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technics">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.technic)">
+        <MappingFragment StoreEntitySet="technics">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="businessNumber" ColumnName="businessNumber" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employments">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.employment)">
+        <MappingFragment StoreEntitySet="employments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rooms">
+      <EntityTypeMapping TypeName="IsTypeOf(MainDatabaseModel.room)">
+        <MappingFragment StoreEntitySet="rooms">
+          <ScalarProperty Name="employID" ColumnName="employID" />
+          <ScalarProperty Name="roomNumber" ColumnName="roomNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="roomemployment" TypeName="MainDatabaseModel.roomemployment" StoreEntitySet="employments">
+      <EndProperty Name="room">
+        <ScalarProperty Name="employID" ColumnName="room_employID" />
+      </EndProperty>
+      <EndProperty Name="employment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
