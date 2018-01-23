@@ -20,5 +20,7 @@ namespace WpfApp
         public string RAM { get; set; }
         public string capacity { get; set; }
         public string operatingSystem { get; set; }
+    
+        public virtual technic technics { get; set; }
     }
 }

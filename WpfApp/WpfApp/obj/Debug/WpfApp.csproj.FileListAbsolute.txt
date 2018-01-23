@@ -58,3 +58,5 @@ C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.GenerateResou
 C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\WpfApp.csproj.CoreCompileInputs.cache
 C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\AddEmploy.g.cs
 C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\AddEmploy.baml
+C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\AddTech.g.cs
+C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\obj\Debug\AddTech.baml

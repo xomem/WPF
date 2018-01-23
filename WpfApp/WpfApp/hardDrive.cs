@@ -18,5 +18,7 @@ namespace WpfApp
         public string company { get; set; }
         public string serialNumber { get; set; }
         public string space { get; set; }
+    
+        public virtual technic technic { get; set; }
     }
 }

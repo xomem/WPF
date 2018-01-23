@@ -20,9 +20,15 @@ namespace WpfApp
     /// </summary>
     public partial class AddEmploy : UserControl
     {
+        private Querys querys;
         public AddEmploy()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            querys.addEmploy(nameBox.Text, srunameBox.Text, patronymicBox.Text);
         }
     }
 }

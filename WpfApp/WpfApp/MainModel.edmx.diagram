@@ -12,7 +12,11 @@
         <EntityTypeShape EntityType="MainDatabaseModel.employment" Width="1.5" PointX="3" PointY="2.375" />
         <EntityTypeShape EntityType="MainDatabaseModel.room" Width="1.5" PointX="0.75" PointY="2.5" />
         <AssociationConnector Association="MainDatabaseModel.roomemployment" />
-      </Diagram>
+        <AssociationConnector Association="MainDatabaseModel.employmentnormTech" />
+        <AssociationConnector Association="MainDatabaseModel.technicnormTech" />
+        <AssociationConnector Association="MainDatabaseModel.systemCharacteristictechnic" />
+        <AssociationConnector Association="MainDatabaseModel.technichardDrive" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -14,11 +14,22 @@ namespace WpfApp
     
     public partial class technic
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public technic()
+        {
+            this.normTeches = new HashSet<normTech>();
+        }
+    
         public int ID { get; set; }
         public string type { get; set; }
         public string company { get; set; }
         public string model { get; set; }
         public string businessNumber { get; set; }
         public string serialNumber { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<normTech> normTeches { get; set; }
+        public virtual systemCharacteristic systemCharacteristic { get; set; }
+        public virtual hardDrive hardDrives { get; set; }
     }
 }

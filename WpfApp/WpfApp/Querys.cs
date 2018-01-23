@@ -21,6 +21,12 @@ namespace WpfApp
         //static string ConnectionAdres = @"Data source=(LocalDB)\MSSQLLocalDB;Attachdbfilename=|DataDirectory|\MainDatabase.mdf;‌​Integrated Security=True;MultipleActiveResultSets=True;";
         static string ConnectionAdres = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SOVAJJ\Google Drive\WpfApp\WpfApp\MainDatabase.mdf;Integrated Security=True";
 
+        public void addEmploy(string name, string surname, string patronymic)
+        {
+            SqlDataAdapter da = new SqlDataAdapter("INSERT INTO employment (surname, name, patronymic)" + " " + "VALUES" + "(" + surname + ", " + name + ", " + patronymic + ")", ConnectionAdres);
+
+        }
+
         public static DataTable employByRoom(string roomNumber)
         {
 

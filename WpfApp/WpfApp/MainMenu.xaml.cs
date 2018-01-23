@@ -24,7 +24,7 @@ namespace WpfApp
     public partial class MainMenu : Page
     {
         private SimpleQueryResult SimpleQueryResult;
-        private AddEmploy AddEmploy;
+        //private AddEmploy AddEmploy;
 
         Window MainWin;
         MainWindow mainWindow = new MainWindow();
@@ -85,7 +85,7 @@ namespace WpfApp
 
         private void addEmploy_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(AddEmploy);
+            NavigationService.Navigate(new AddEmploy());
             MainWin.Title = "Добавить сотрудника";
         }
 

@@ -14,11 +14,19 @@ namespace WpfApp
     
     public partial class employment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public employment()
+        {
+            this.normTeches = new HashSet<normTech>();
+        }
+    
         public int ID { get; set; }
         public string surname { get; set; }
         public string name { get; set; }
         public string patronymic { get; set; }
     
         public virtual room room { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<normTech> normTeches { get; set; }
     }
 }

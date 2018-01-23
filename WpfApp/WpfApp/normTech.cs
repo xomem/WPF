@@ -16,5 +16,8 @@ namespace WpfApp
     {
         public int techID { get; set; }
         public int employID { get; set; }
+    
+        public virtual employment employment { get; set; }
+        public virtual technic technic { get; set; }
     }
 }

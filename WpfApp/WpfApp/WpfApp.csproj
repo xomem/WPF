@@ -81,6 +81,9 @@
     <Compile Include="AddEmploy.xaml.cs">
       <DependentUpon>AddEmploy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddTech.xaml.cs">
+      <DependentUpon>AddTech.xaml</DependentUpon>
+    </Compile>
     <Compile Include="employment.cs">
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <DependentUpon>MainModel.tt</DependentUpon>
     </Compile>
     <Page Include="AddEmploy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddTech.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
