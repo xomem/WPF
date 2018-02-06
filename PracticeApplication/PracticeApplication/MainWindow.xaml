@@ -1,0 +1,14 @@
+﻿<Window x:Class="PracticeApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PracticeApplication"
+        Loaded="WindowLoaded"
+        mc:Ignorable="d"
+        Title="Главное меню" Height="650" Width="1200" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Frame Content="" HorizontalAlignment="Left" Height="621" VerticalAlignment="Top" Width="1194" x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+
+    </Grid>
+</Window>

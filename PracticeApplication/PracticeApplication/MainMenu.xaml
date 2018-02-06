@@ -1,0 +1,25 @@
+﻿<Page x:Class="PracticeApplication.MainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PracticeApplication"
+      mc:Ignorable="d" 
+      d:DesignHeight="621" d:DesignWidth="1194"
+      Title="MainMenu">
+
+    <Grid Background="White" Loaded="Grid_Loaded">
+        <Label Content="Простая выборка" HorizontalAlignment="Center" Margin="372,395,372,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button x:Name="allEmploy" Content="Список всех сотрудников" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand" Click="allEmploy_Click"/>
+        <Button x:Name="allRoom" Content="Список всех кабинетов" HorizontalAlignment="Center" Margin="0,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="allDepartment" Content="Список всех отделов" HorizontalAlignment="Left" Margin="653,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand"/>
+        <Label Content="Добавить" HorizontalAlignment="Center" Margin="60,10,752,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Найти" HorizontalAlignment="Center" Margin="294,10,546,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Изменить" HorizontalAlignment="Center" Margin="547,10,258,0" VerticalAlignment="Top" FontSize="18" Width="95"/>
+        <Label Content="Удалить" HorizontalAlignment="Center" Margin="795,10,10,0" VerticalAlignment="Top" FontSize="18" Width="95"/>
+        <Button x:Name="addEmploy" Content="Добавить сотрудника" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" Click="addEmploy_Click"/>
+        <Button x:Name="addRoom" Content="Добавить кабинет" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" />
+        <Button x:Name="addDepartment" Content="Добавить отдел" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="addContact" Content="Добавить контакты" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
+    </Grid>
+</Page>
