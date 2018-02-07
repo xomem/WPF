@@ -25,24 +25,72 @@ namespace PracticeApplication
             dataAdapter.Fill(dataTable);
             return dataTable;
         }
-        public static SecurityPosition fillPosition()
+        public static IEnumerable<SecurityPosition> fillPosition()
         {
             SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
 
-            SecurityPosition securityPosition = null;
             SqlCommand nameComand = new SqlCommand($"SELECT [Id], [Название] FROM [Должности]", sqlConnection);
             sqlConnection.Open();
             SqlDataReader reader = nameComand.ExecuteReader();
             reader.Read();
             if (reader.HasRows)
             {
-                var positionId = reader.GetString(0);
-                var positionName = reader.GetString(1);
-                securityPosition = new SecurityPosition { positionId = positionId, positionName = positionName };
+                while (reader.Read())
+                {
+                    var positionId = reader.GetInt32(0);
+                    var positionName = reader.GetString(1);
+                    yield return new SecurityPosition { positionId = positionId, positionName = positionName };
+                }
             }
             reader.Close();
             sqlConnection.Close();
-            return securityPosition;
+        }
+        public static IEnumerable<SecurityDepartment> fillDepartment()
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
+
+            SqlCommand nameComand = new SqlCommand($"SELECT [Id], [Название отдела] FROM [Отделы]", sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader reader = nameComand.ExecuteReader();
+            reader.Read();
+            //if (reader.HasRows)
+            //{
+                while (reader.Read())
+                {
+                    var departmentId = reader.GetInt32(0);
+                    var departmentName = reader.GetString(1);
+                    yield return new SecurityDepartment { departmentId = departmentId, departmentName = departmentName };
+                }
+            //}
+            reader.Close();
+            sqlConnection.Close();
+        }
+        public static IEnumerable<SecurityRoom> fillRoom(int id)
+        {
+            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
+            SqlCommand roomCommand = new SqlCommand($"SELECT К.Id, К.[Номер кабинета], К.[Номер отдела] as idОтдела, О.[Название отдела] as НазваниеОтдела FROM Кабинеты as К JOIN Отделы as О on О.Id = К.[Номер отдела] WHERE О.Id = {id}", sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader reader = roomCommand.ExecuteReader();
+            reader.Read();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var roomId = reader.GetInt32(0);
+                    var roomName = reader.GetString(1);
+                    var departmentNumber = reader.GetInt32(2);
+                    yield return new SecurityRoom { roomId = roomId, roomName = roomName, departmentNumber = departmentNumber};
+                }
+            }
+            reader.Close();
+            sqlConnection.Close();
+        }
+        public static DataTable employByRoom(string roomNumber)
+        {
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники] INNER JOIN [Кабинеты] ON [Сотрудники].ID = [Кабинеты].employID WHERE room.roomNumber = " + roomNumber, ConnectionAdres);
+            DataTable dataTable = new DataTable("Call Reciept");
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
         }
     }
 }

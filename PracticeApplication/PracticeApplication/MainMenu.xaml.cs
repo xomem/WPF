@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace PracticeApplication
 {
@@ -24,6 +26,10 @@ namespace PracticeApplication
 
         Window MainWin;
         MainWindow mainWindow = new MainWindow();
+        private bool HasRows(DataTable room)
+        {
+            return room.Rows.Count > 0;
+        }
         public MainMenu(Window MainWin)
         {
             InitializeComponent();
@@ -54,6 +60,26 @@ namespace PracticeApplication
         {
             NavigationService.Navigate(new AddEmploy());
             MainWin.Title = "Добавить сотрудника";
+        }
+
+        private void findEmployByRoom_Click(object sender, RoutedEventArgs e)
+        {
+            Find.SearchEngine searchEngine = new Find.SearchEngine();
+            string str;
+            bool hasInput = searchEngine.TryGetName("Поиск сотрудника по номеру кабинета", out str);
+            if (hasInput)
+            {
+                var Rooms = Querys.employByRoom(str);
+                if (HasRows(Rooms))
+                {
+                    SimpleQueryResult = new SimpleQueryResult(Rooms);
+                    NavigationService.Navigate(SimpleQueryResult);
+                }
+                else
+                {
+                    //searchEngine.checkError("Поиск сотрудника по номеру кабинета");
+                }
+            }
         }
     }
 }

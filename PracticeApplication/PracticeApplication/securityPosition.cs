@@ -8,7 +8,7 @@ namespace PracticeApplication
 {
     public class SecurityPosition
     {
-        public string positionId { get; set; }
+        public int positionId { get; set; }
         public string positionName { get; set; }
     }
 }

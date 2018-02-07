@@ -18,7 +18,9 @@ C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\bin\Debug\M
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\PracticeApplication_Content.g.cs
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\SimpleQueryResult.g.cs
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\SimpleQueryResult.baml
-C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\AddEmploy.g.cs
-C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\AddEmploy.baml
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\PracticeApplication.Properties.Resources.resources
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\PracticeApplication.csproj.GenerateResource.Cache
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddEmploy.g.cs
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Find\SearchWindow.g.cs
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddEmploy.baml
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Find\SearchWindow.baml

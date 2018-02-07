@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace PracticeApplication
 {
-    class SecurityDepartment
+    public class SecurityDepartment
     {
+        public int departmentId { get; set; }
+        public string departmentName { get; set; }
+        public IList<SecurityRoom> Values { get;set;}
     }
 }

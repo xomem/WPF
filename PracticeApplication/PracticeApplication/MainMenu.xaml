@@ -11,15 +11,19 @@
     <Grid Background="White" Loaded="Grid_Loaded">
         <Label Content="Простая выборка" HorizontalAlignment="Center" Margin="372,395,372,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="allEmploy" Content="Список всех сотрудников" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand" Click="allEmploy_Click"/>
-        <Button x:Name="allRoom" Content="Список всех кабинетов" HorizontalAlignment="Center" Margin="0,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="allRoom" Content="Список всех кабинетов" HorizontalAlignment="Center" Margin="350,455,608,0" VerticalAlignment="Top" Width="236" FontSize="18" Height="44" Cursor="Hand"/>
         <Button x:Name="allDepartment" Content="Список всех отделов" HorizontalAlignment="Left" Margin="653,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand"/>
-        <Label Content="Добавить" HorizontalAlignment="Center" Margin="60,10,752,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Добавить" HorizontalAlignment="Center" Margin="134,10,972,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Найти" HorizontalAlignment="Center" Margin="294,10,546,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Изменить" HorizontalAlignment="Center" Margin="547,10,258,0" VerticalAlignment="Top" FontSize="18" Width="95"/>
         <Label Content="Удалить" HorizontalAlignment="Center" Margin="795,10,10,0" VerticalAlignment="Top" FontSize="18" Width="95"/>
-        <Button x:Name="addEmploy" Content="Добавить сотрудника" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" Click="addEmploy_Click"/>
-        <Button x:Name="addRoom" Content="Добавить кабинет" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" />
-        <Button x:Name="addDepartment" Content="Добавить отдел" HorizontalAlignment="Left" Margin="10,204,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
-        <Button x:Name="addContact" Content="Добавить контакты" HorizontalAlignment="Left" Margin="10,281,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="addEmploy" Content="Добавить сотрудника" HorizontalAlignment="Left" Margin="77,52,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" Click="addEmploy_Click"/>
+        <Button x:Name="addRoom" Content="Добавить кабинет" HorizontalAlignment="Left" Margin="77,123,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand" />
+        <Button x:Name="addDepartment" Content="Добавить отдел" HorizontalAlignment="Left" Margin="77,198,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="addContact" Content="Добавить контакты" HorizontalAlignment="Left" Margin="77,275,0,0" VerticalAlignment="Top" Width="199" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="findEmployByRoom"  HorizontalAlignment="Left" Margin="367,49,0,0" VerticalAlignment="Top" Width="208" Height="53" Cursor="Hand" Click="findEmployByRoom_Click">
+            <TextBlock Text="Поиск сотрудника по номеру кабинета"
+                TextWrapping="Wrap" TextAlignment="Center" FontSize="16"/>
+        </Button>
     </Grid>
 </Page>
