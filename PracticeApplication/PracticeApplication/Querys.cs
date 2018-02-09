@@ -18,6 +18,59 @@ namespace PracticeApplication
     {
         const string ConnectionAdres = @"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MainDatabase.mdf;MultipleActiveResultSets=True;";
 
+        public static bool checkRoom(int roomNumber)
+        {
+            bool result = false;
+            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
+            SqlCommand roomCommand = new SqlCommand($"SELECT [Номер кабинета] FROM Кабинеты WHERE [Номер кабинета] = {roomNumber}", sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader reader = roomCommand.ExecuteReader();
+            reader.Read();
+            result = reader.HasRows;
+            reader.Close();
+            sqlConnection.Close();
+            return result;
+        }
+
+        public static void addRoom(int number, int department)
+        {
+            bool result = checkRoom(number);
+            if (!result)
+            {
+                var query =
+                $"INSERT INTO [Кабинеты] ([Номер кабинета], [Номер отдела]) VALUES(@Кабинет, @Отдел);";
+                using (SqlConnection connection = new SqlConnection(ConnectionAdres))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("Кабинет", number);
+                    command.Parameters.AddWithValue("Отдел", department);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+        }
+        public static void addEmploy(string name, string surname, string patronymic, string date, int position, int department, string city, string adres, string phone)
+        {
+            var query =
+            $"INSERT INTO [Сотрудники] (Имя, Фамилия, Отчество, [Дата рождения], Должность, Отдел, Город, Адрес, Телефон) VALUES(@Имя, @Фамилия, @Отчество, @Дата, @Должность, @Отдел, @Город, @Адрес, @Телефон);";
+            using (SqlConnection connection = new SqlConnection(ConnectionAdres))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("Имя", name);
+                command.Parameters.AddWithValue("Фамилия", surname);
+                command.Parameters.AddWithValue("Отчество", patronymic);
+                command.Parameters.AddWithValue("Дата", date);
+                command.Parameters.AddWithValue("Должность", position);
+                command.Parameters.AddWithValue("Отдел", department);
+                command.Parameters.AddWithValue("Город", city);
+                command.Parameters.AddWithValue("Адрес", adres);
+                command.Parameters.AddWithValue("Телефон", phone);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
         public static DataTable readEmployers()
         {
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
@@ -35,12 +88,13 @@ namespace PracticeApplication
             reader.Read();
             if (reader.HasRows)
             {
-                while (reader.Read())
+                do
                 {
                     var positionId = reader.GetInt32(0);
                     var positionName = reader.GetString(1);
                     yield return new SecurityPosition { positionId = positionId, positionName = positionName };
                 }
+                while (reader.Read());
             }
             reader.Close();
             sqlConnection.Close();
@@ -54,14 +108,15 @@ namespace PracticeApplication
             SqlDataReader reader = nameComand.ExecuteReader();
             reader.Read();
             //if (reader.HasRows)
-            //{
-                while (reader.Read())
+            {
+                do
                 {
                     var departmentId = reader.GetInt32(0);
                     var departmentName = reader.GetString(1);
                     yield return new SecurityDepartment { departmentId = departmentId, departmentName = departmentName };
                 }
-            //}
+                while (reader.Read());
+            }
             reader.Close();
             sqlConnection.Close();
         }
@@ -74,13 +129,14 @@ namespace PracticeApplication
             reader.Read();
             if (reader.HasRows)
             {
-                while (reader.Read())
+                do
                 {
                     var roomId = reader.GetInt32(0);
                     var roomName = reader.GetString(1);
                     var departmentNumber = reader.GetInt32(2);
-                    yield return new SecurityRoom { roomId = roomId, roomName = roomName, departmentNumber = departmentNumber};
+                    yield return new SecurityRoom { roomId = roomId, roomName = roomName, departmentNumber = departmentNumber };
                 }
+                while (reader.Read());
             }
             reader.Close();
             sqlConnection.Close();

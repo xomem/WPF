@@ -81,5 +81,11 @@ namespace PracticeApplication
                 }
             }
         }
+
+        private void addRoom_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Add.AddRoom());
+            MainWin.Title = "Добавить кабинет";
+        }
     }
 }

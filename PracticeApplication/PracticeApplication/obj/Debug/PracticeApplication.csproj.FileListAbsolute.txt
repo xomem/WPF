@@ -24,3 +24,5 @@ C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\A
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Find\SearchWindow.g.cs
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddEmploy.baml
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Find\SearchWindow.baml
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddRoom.g.cs
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddRoom.baml

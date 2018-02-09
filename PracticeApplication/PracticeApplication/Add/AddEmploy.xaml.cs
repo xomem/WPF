@@ -36,7 +36,7 @@ namespace PracticeApplication
         {
             if (nameBox.Text != "" && srunameBox.Text != "" && adressBox.Text != "" && phoneBox.Text != "" && cityBox.Text != "" && dataPiker.SelectedDate != null && roomSelect.SelectedItem != null && positionSelect.SelectedItem != null && departmentSelect.SelectedItem != null)
             {
-                //Querys.addEmploy(nameBox.Text, srunameBox.Text, patronymicBox.Text);
+                Querys.addEmploy(nameBox.Text, srunameBox.Text, patronymicBox.Text, Convert.ToString(dataPiker.SelectedDate), (positionSelect.SelectedItem as SecurityPosition).positionId, (departmentSelect.SelectedItem as SecurityDepartment).departmentId, cityBox.Text, adressBox.Text, phoneBox.Text);
                 MessageBox.Show("Запись успешно добавленна");
                 if(errorLabel.Content.ToString() != "")
                 {
@@ -69,5 +69,7 @@ namespace PracticeApplication
 
             }
         }
+
+
     }
 }

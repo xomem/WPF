@@ -72,18 +72,25 @@
     <Compile Include="Add\AddEmploy.xaml.cs">
       <DependentUpon>AddEmploy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\AddRoom.xaml.cs">
+      <DependentUpon>AddRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Find\SearchEngine.cs" />
     <Compile Include="Find\SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Querys.cs" />
-    <Compile Include="SecurityDepartment.cs" />
-    <Compile Include="SecurityPosition.cs" />
-    <Compile Include="SecurityRoom.cs" />
+    <Compile Include="Security\SecurityDepartment.cs" />
+    <Compile Include="Security\SecurityPosition.cs" />
+    <Compile Include="Security\SecurityRoom.cs" />
     <Compile Include="SimpleQueryResult.xaml.cs">
       <DependentUpon>SimpleQueryResult.xaml</DependentUpon>
     </Compile>
     <Page Include="Add\AddEmploy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Add\AddRoom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
