@@ -17,6 +17,40 @@ namespace PracticeApplication
     public static class Querys
     {
         const string ConnectionAdres = @"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MainDatabase.mdf;MultipleActiveResultSets=True;";
+        //static string ConnectionAdres = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\MainDatabase.mdf;Integrated Security=True";
+        public static bool checkDepartment(string name)
+        {
+            bool result = false;
+            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
+            SqlCommand roomCommand = new SqlCommand($"SELECT [Название отдела] FROM Отделы WHERE [Название отдела]= {name}", sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader reader = roomCommand.ExecuteReader();
+            reader.Read();
+            result = reader.HasRows;
+            reader.Close();
+            sqlConnection.Close();
+            return result;
+        }
+
+        public static bool addDepartment(string name)
+        {
+            bool result = checkDepartment(name);
+            if (!result)
+            {
+
+                var query =
+                $"INSERT INTO [Отделы] ([Название отдела]) VALUES(@Отдел);";
+                using (SqlConnection connection = new SqlConnection(ConnectionAdres))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("Отдел", name);
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            return result;
+        }
 
         public static bool checkRoom(int roomNumber)
         {
@@ -31,12 +65,12 @@ namespace PracticeApplication
             sqlConnection.Close();
             return result;
         }
-
-        public static void addRoom(int number, int department)
+        public static bool addRoom(int number, int department)
         {
             bool result = checkRoom(number);
             if (!result)
             {
+
                 var query =
                 $"INSERT INTO [Кабинеты] ([Номер кабинета], [Номер отдела]) VALUES(@Кабинет, @Отдел);";
                 using (SqlConnection connection = new SqlConnection(ConnectionAdres))
@@ -49,7 +83,32 @@ namespace PracticeApplication
                     connection.Close();
                 }
             }
+            return result;
         }
+        //public static void addRoom(int number, int department)
+        //{
+        //    bool result = checkRoom(number);
+        //    if (!result)
+        //    {
+
+        //        var query =
+        //        $"INSERT INTO [Кабинеты] ([Номер кабинета], [Номер отдела]) VALUES(@Кабинет, @Отдел);";
+        //        using (SqlConnection connection = new SqlConnection(ConnectionAdres))
+        //        {
+        //            connection.Open();
+        //            SqlCommand command = new SqlCommand(query, connection);
+        //            command.Parameters.AddWithValue("Кабинет", number);
+        //            command.Parameters.AddWithValue("Отдел", department);
+        //            command.ExecuteNonQuery();
+        //            connection.Close();
+        //        }
+        //        Add.AddRoom.successfully();
+        //    }
+        //    else
+        //    {
+        //        Add.AddRoom.alreadeExists();
+        //    }
+        //}
         public static void addEmploy(string name, string surname, string patronymic, string date, int position, int department, string city, string adres, string phone)
         {
             var query =
@@ -141,9 +200,9 @@ namespace PracticeApplication
             reader.Close();
             sqlConnection.Close();
         }
-        public static DataTable employByRoom(string roomNumber)
+        public static DataTable employBySurname(string surname)
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники] INNER JOIN [Кабинеты] ON [Сотрудники].ID = [Кабинеты].employID WHERE room.roomNumber = " + roomNumber, ConnectionAdres);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники] WHERE Фамилия = '"+ surname +"'", ConnectionAdres);
             DataTable dataTable = new DataTable("Call Reciept");
             sqlDataAdapter.Fill(dataTable);
             return dataTable;

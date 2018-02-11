@@ -62,17 +62,29 @@ namespace PracticeApplication
             MainWin.Title = "Добавить сотрудника";
         }
 
-        private void findEmployByRoom_Click(object sender, RoutedEventArgs e)
+        private void addRoom_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Add.AddRoom());
+            MainWin.Title = "Добавить кабинет";
+        }
+
+        private void addDepartment_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Add.AddDepartment());
+            MainWin.Title = "Добавить отдел";
+        }
+
+        private void findEmployBySurname_Click(object sender, RoutedEventArgs e)
         {
             Find.SearchEngine searchEngine = new Find.SearchEngine();
             string str;
-            bool hasInput = searchEngine.TryGetName("Поиск сотрудника по номеру кабинета", out str);
+            bool hasInput = searchEngine.TryGetName("Поиск сотрудника по фамилии", out str);
             if (hasInput)
             {
-                var Rooms = Querys.employByRoom(str);
-                if (HasRows(Rooms))
+                var surnmae = Querys.employBySurname(str);
+                if (surnmae != null && HasRows(surnmae))
                 {
-                    SimpleQueryResult = new SimpleQueryResult(Rooms);
+                    SimpleQueryResult = new SimpleQueryResult(surnmae);
                     NavigationService.Navigate(SimpleQueryResult);
                 }
                 else
@@ -80,12 +92,6 @@ namespace PracticeApplication
                     //searchEngine.checkError("Поиск сотрудника по номеру кабинета");
                 }
             }
-        }
-
-        private void addRoom_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Add.AddRoom());
-            MainWin.Title = "Добавить кабинет";
         }
     }
 }

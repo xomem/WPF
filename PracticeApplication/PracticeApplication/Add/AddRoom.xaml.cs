@@ -32,8 +32,14 @@ namespace PracticeApplication.Add
         {
             if (numberBox.Text != "" && departmentSelect.SelectedItem != null)
             {
-                Querys.addRoom(Convert.ToInt32(numberBox.Text), (departmentSelect.SelectedItem as SecurityDepartment).departmentId);
-                //MessageBox.Show("Запись успешно добавленна");
+                if (Querys.addRoom(Convert.ToInt32(numberBox.Text), (departmentSelect.SelectedItem as SecurityDepartment).departmentId))
+                {
+                    alreadeExists();
+                }
+                else
+                {
+                    successfully();
+                }
                 if (errorLabel.Content.ToString() != "")
                 {
                     errorLabel.Content = "";
@@ -48,7 +54,13 @@ namespace PracticeApplication.Add
         {
             NavigationService.GoBack();
         }
-
-       
+        public void alreadeExists()
+        {
+            MessageBox.Show("Такой кабинет уже существует");
+        }
+        public void successfully()
+        {
+            MessageBox.Show("Запись успешно добавлена");
+        }
     }
 }
