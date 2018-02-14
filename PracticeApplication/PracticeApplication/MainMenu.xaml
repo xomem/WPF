@@ -11,7 +11,7 @@
     <Grid Background="White" Loaded="Grid_Loaded">
         <Label Content="Простая выборка" HorizontalAlignment="Center" Margin="372,395,372,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="allEmploy" Content="Список всех сотрудников" HorizontalAlignment="Left" Margin="77,455,0,0" VerticalAlignment="Top" Width="237" FontSize="18" Height="44" Cursor="Hand" Click="allEmploy_Click"/>
-        <Button x:Name="allRoom" Content="Список всех кабинетов" HorizontalAlignment="Center" Margin="472,455,486,0" VerticalAlignment="Top" Width="236" FontSize="18" Height="44" Cursor="Hand"/>
+        <Button x:Name="allRoom" Content="Список всех кабинетов" HorizontalAlignment="Center" Margin="472,455,486,0" VerticalAlignment="Top" Width="236" FontSize="18" Height="44" Cursor="Hand" Click="allRoom_Click"/>
         <Button x:Name="allDepartment" Content="Список всех отделов" HorizontalAlignment="Left" Margin="873,455,0,0" VerticalAlignment="Top" Width="238" FontSize="18" Height="44" Cursor="Hand"/>
         <Label Content="Добавить" HorizontalAlignment="Center" Margin="134,10,972,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Найти" HorizontalAlignment="Center" Margin="294,10,546,0" VerticalAlignment="Top" FontSize="18"/>

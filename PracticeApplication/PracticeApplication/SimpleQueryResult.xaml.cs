@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 
+
+
 namespace PracticeApplication
 {
     /// <summary>
@@ -31,6 +33,13 @@ namespace PracticeApplication
         private void goBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DataView dataView = SQRDataGridXAML.ItemsSource as DataView;
+            DataTable table = dataView.ToTable();
+            Report.ToExel(table, "");
         }
     }
 }

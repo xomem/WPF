@@ -17,6 +17,7 @@
                 <!--<TextBlock Text="&lt; Назад" TextWrapping="Wrap" TextAlignment="Center"/>-->
             </StackPanel>
         </Button>
-        <DataGrid x:Name="SQRDataGridXAML" HorizontalAlignment="Center" Height="520" Margin="10,74,0,0" VerticalAlignment="Top" Width="1124"/>
+        <DataGrid x:Name="SQRDataGridXAML" HorizontalAlignment="Center" Height="470" Margin="40,74,30,0" VerticalAlignment="Top" Width="1124"/>
+        <Button Content="Сформировать отчет" HorizontalAlignment="Left" Margin="966,583,0,0" VerticalAlignment="Top" Width="198" Cursor="Hand" FontSize="18" Click="Button_Click"/>
     </Grid>
 </Page>

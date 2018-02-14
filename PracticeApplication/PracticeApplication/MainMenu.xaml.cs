@@ -93,5 +93,21 @@ namespace PracticeApplication
                 }
             }
         }
+
+        private void allRoom_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var rooms = Querys.readRoom();
+                mainWindow.successfulConnection();
+                SimpleQueryResult = new SimpleQueryResult(rooms);
+                NavigationService.Navigate(SimpleQueryResult);
+                MainWin.Title = "Все кабинеты";
+            }
+            catch (Exception ex)
+            {
+                mainWindow.errorConnection(ex);
+            }
+        }
     }
 }

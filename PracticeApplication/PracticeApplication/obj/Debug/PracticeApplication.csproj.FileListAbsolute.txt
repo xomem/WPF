@@ -28,3 +28,4 @@ C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\A
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddRoom.baml
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddDepartment.g.cs
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddDepartment.baml
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\PracticeApplication.csproj.ResolveComReference.cache

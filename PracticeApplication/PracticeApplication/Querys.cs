@@ -132,7 +132,18 @@ namespace PracticeApplication
         }
         public static DataTable readEmployers()
         {
-            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
+            //SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id", ConnectionAdres);
+
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
+            return dataTable;
+        }
+        public static DataTable readRoom()
+        {
+            //SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id", ConnectionAdres);
+
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             return dataTable;
@@ -202,7 +213,7 @@ namespace PracticeApplication
         }
         public static DataTable employBySurname(string surname)
         {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники] WHERE Фамилия = '"+ surname +"'", ConnectionAdres);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id WHERE c.Фамилия = N'" + surname +"'", ConnectionAdres);
             DataTable dataTable = new DataTable("Call Reciept");
             sqlDataAdapter.Fill(dataTable);
             return dataTable;
