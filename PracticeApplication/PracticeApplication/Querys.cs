@@ -109,10 +109,10 @@ namespace PracticeApplication
         //        Add.AddRoom.alreadeExists();
         //    }
         //}
-        public static void addEmploy(string name, string surname, string patronymic, string date, int position, int department, string city, string adres, string phone)
+        public static void addEmploy(string name, string surname, string patronymic, string date, int position, int department, string city, string adres, string phone, string room)
         {
             var query =
-            $"INSERT INTO [Сотрудники] (Имя, Фамилия, Отчество, [Дата рождения], Должность, Отдел, Город, Адрес, Телефон) VALUES(@Имя, @Фамилия, @Отчество, @Дата, @Должность, @Отдел, @Город, @Адрес, @Телефон);";
+            $"INSERT INTO [Сотрудники] (Имя, Фамилия, Отчество, [Дата рождения], Должность, Отдел, Кабинет, Город, Адрес, Телефон) VALUES(@Имя, @Фамилия, @Отчество, @Дата, @Должность, @Отдел, @Кабинет, @Город, @Адрес, @Телефон);";
             using (SqlConnection connection = new SqlConnection(ConnectionAdres))
             {
                 connection.Open();
@@ -123,6 +123,7 @@ namespace PracticeApplication
                 command.Parameters.AddWithValue("Дата", date);
                 command.Parameters.AddWithValue("Должность", position);
                 command.Parameters.AddWithValue("Отдел", department);
+                command.Parameters.AddWithValue("Кабинет", room);
                 command.Parameters.AddWithValue("Город", city);
                 command.Parameters.AddWithValue("Адрес", adres);
                 command.Parameters.AddWithValue("Телефон", phone);
@@ -152,7 +153,7 @@ namespace PracticeApplication
         {
             SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
 
-            SqlCommand nameComand = new SqlCommand($"SELECT [Id], [Название] FROM [Должности]", sqlConnection);
+            SqlCommand nameComand = new SqlCommand($"SELECT [Id], [Название должности] FROM [Должности]", sqlConnection);
             sqlConnection.Open();
             SqlDataReader reader = nameComand.ExecuteReader();
             reader.Read();
