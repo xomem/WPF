@@ -8,11 +8,21 @@ namespace PracticeApplication.Find
 {
     class SearchEngine
     {
-        public bool TryGetName(string title, out string name)
+        public bool TryGetRoom(string title, out string room)
         {
             SearchWindow searchWindow = new SearchWindow(title);
             searchWindow.TitleLabel.Content = "Введите номер кабинета";
 
+            searchWindow.ShowDialog();
+            searchWindow.search.Content = "Удалить";
+            room = searchWindow.Input;
+
+            return !String.IsNullOrWhiteSpace(room);
+        }
+        public bool TryGetSurname(string title, out string name)
+        {
+            SearchWindow searchWindow = new SearchWindow(title);
+            searchWindow.TitleLabel.Content = "Введите фамилию сотрудника";
             searchWindow.ShowDialog();
             name = searchWindow.Input;
 

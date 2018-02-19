@@ -18,17 +18,19 @@ namespace PracticeApplication
     {
         const string ConnectionAdres = @"data source=(LocalDB)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\MainDatabase.mdf;MultipleActiveResultSets=True;";
         //static string ConnectionAdres = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\MainDatabase.mdf;Integrated Security=True";
-        public static bool checkDepartment(string name)
+
+
+        public static bool removeRoom(string number)
         {
+            var query = $"DELETE FROM [Кабинеты] WHERE [Номер кабинета] = '{number}';";
             bool result = false;
-            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
-            SqlCommand roomCommand = new SqlCommand($"SELECT [Название отдела] FROM Отделы WHERE [Название отдела]= {name}", sqlConnection);
-            sqlConnection.Open();
-            SqlDataReader reader = roomCommand.ExecuteReader();
-            reader.Read();
-            result = reader.HasRows;
-            reader.Close();
-            sqlConnection.Close();
+            using (SqlConnection connection = new SqlConnection(ConnectionAdres))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(query, connection);
+                result = command.ExecuteNonQuery() >= 1;
+                connection.Close();
+            }
             return result;
         }
 
@@ -51,15 +53,27 @@ namespace PracticeApplication
             }
             return result;
         }
+        public static bool checkDepartment(string name)
+        {
+            bool result = false;
+            SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
+            SqlCommand roomCommand = new SqlCommand($"SELECT [Название отдела] FROM Отделы WHERE [Название отдела]= N'{name}';", sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader reader = roomCommand.ExecuteReader();
+            result = reader.HasRows;
+            reader.Close();
+            sqlConnection.Close();
+            return result;
+        }
 
         public static bool checkRoom(int roomNumber)
         {
             bool result = false;
             SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
-            SqlCommand roomCommand = new SqlCommand($"SELECT [Номер кабинета] FROM Кабинеты WHERE [Номер кабинета] = {roomNumber}", sqlConnection);
+            SqlCommand roomCommand = new SqlCommand($"SELECT [Номер кабинета] FROM Кабинеты WHERE [Номер кабинета] = {roomNumber};", sqlConnection);
             sqlConnection.Open();
             SqlDataReader reader = roomCommand.ExecuteReader();
-            reader.Read();
+            //reader.Read();
             result = reader.HasRows;
             reader.Close();
             sqlConnection.Close();
@@ -133,7 +147,6 @@ namespace PracticeApplication
         }
         public static DataTable readEmployers()
         {
-            //SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id", ConnectionAdres);
 
             DataTable dataTable = new DataTable();
@@ -142,13 +155,21 @@ namespace PracticeApplication
         }
         public static DataTable readRoom()
         {
-            //SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM [Сотрудники]", ConnectionAdres);
             SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id", ConnectionAdres);
 
             DataTable dataTable = new DataTable();
             dataAdapter.Fill(dataTable);
             return dataTable;
         }
+       
+        public static DataTable employBySurname(string surname)
+        {
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id WHERE c.Фамилия = N'" + surname +"'", ConnectionAdres);
+            DataTable dataTable = new DataTable("Call Reciept");
+            sqlDataAdapter.Fill(dataTable);
+            return dataTable;
+        }
+
         public static IEnumerable<SecurityPosition> fillPosition()
         {
             SqlConnection sqlConnection = new SqlConnection(ConnectionAdres);
@@ -211,13 +232,6 @@ namespace PracticeApplication
             }
             reader.Close();
             sqlConnection.Close();
-        }
-        public static DataTable employBySurname(string surname)
-        {
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT c.Имя, c.Фамилия, c.Отчество, c.[Дата рождения], c.Город, c.Адрес, c.Телефон, o.[Название отдела], d.[Название должности], r.[Номер кабинета] FROM[Сотрудники] AS c INNER JOIN Отделы AS o ON c.Отдел = o.Id INNER JOIN Должности AS d ON c.Должность = d.Id INNER JOIN Кабинеты AS r ON c.Кабинет = r.Id WHERE c.Фамилия = N'" + surname +"'", ConnectionAdres);
-            DataTable dataTable = new DataTable("Call Reciept");
-            sqlDataAdapter.Fill(dataTable);
-            return dataTable;
         }
     }
 }

@@ -78,7 +78,7 @@ namespace PracticeApplication
         {
             Find.SearchEngine searchEngine = new Find.SearchEngine();
             string str;
-            bool hasInput = searchEngine.TryGetName("Поиск сотрудника по фамилии", out str);
+            bool hasInput = searchEngine.TryGetSurname("Поиск сотрудника по фамилии", out str);
             if (hasInput)
             {
                 var surnmae = Querys.employBySurname(str);
@@ -108,6 +108,35 @@ namespace PracticeApplication
             {
                 mainWindow.errorConnection(ex);
             }
+        }
+
+        private void removeRoom_Click(object sender, RoutedEventArgs e)
+        {
+            Find.SearchEngine searchEngine = new Find.SearchEngine();
+            string str;
+            bool hasInput = searchEngine.TryGetRoom("Удалить кабинет", out str);
+            if (hasInput)
+            {
+                if (Querys.removeRoom(str))
+                {
+                    MessageBox.Show("Запись удалена");
+                }
+            }
+        }
+
+        private void removeDepartment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void removeEmploy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void removePosition_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
