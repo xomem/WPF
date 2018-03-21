@@ -29,3 +29,7 @@ C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\A
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddDepartment.g.cs
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddDepartment.baml
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\PracticeApplication.csproj.ResolveComReference.cache
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddPosition.g.cs
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Add\AddPosition.baml
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Update\updateEmploy.g.cs
+C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\obj\Debug\Update\updateEmploy.baml

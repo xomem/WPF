@@ -126,17 +126,89 @@ namespace PracticeApplication
 
         private void removeDepartment_Click(object sender, RoutedEventArgs e)
         {
-
+            Find.SearchEngine searchEngine = new Find.SearchEngine();
+            string str;
+            bool hasInput = searchEngine.TryGetDepart("Удалить отдел", out str);
+            if (hasInput)
+            {
+                if (Querys.removeDepartment(str))
+                {
+                    MessageBox.Show("Запись удалена");
+                }
+            }
         }
 
         private void removeEmploy_Click(object sender, RoutedEventArgs e)
         {
-
+            Find.SearchEngine searchEngine = new Find.SearchEngine();
+            string str;
+            bool hasInput = searchEngine.TryDelSurname("Удалить должность", out str);
+            if (hasInput)
+            {
+                if (Querys.removeEmploy(str))
+                {
+                    MessageBox.Show("Запись удалена");
+                }
+            }
         }
 
         private void removePosition_Click(object sender, RoutedEventArgs e)
         {
+            Find.SearchEngine searchEngine = new Find.SearchEngine();
+            string str;
+            bool hasInput = searchEngine.TryGetPos("Удалить должность", out str);
+            if (hasInput)
+            {
+                if (Querys.removePosition(str))
+                {
+                    MessageBox.Show("Запись удалена");
+                }
+            }
+        }
 
+        private void allPositions_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var positions = Querys.readPosition();
+                mainWindow.successfulConnection();
+                SimpleQueryResult = new SimpleQueryResult(positions);
+                NavigationService.Navigate(SimpleQueryResult);
+                MainWin.Title = "Все должностии";
+            }
+            catch (Exception ex)
+            {
+                mainWindow.errorConnection(ex);
+            }
+        }
+
+        private void addPostition_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Add.AddPosition());
+            MainWin.Title = "Добавить должность";
+        }
+
+        private void allDepartment_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                var departments = Querys.readDepartment();
+                mainWindow.successfulConnection();
+                SimpleQueryResult = new SimpleQueryResult(departments);
+                NavigationService.Navigate(SimpleQueryResult);
+                MainWin.Title = "Все отделы";
+            }
+            catch (Exception ex)
+            {
+                mainWindow.errorConnection(ex);
+            }
+        }
+
+        private void updateEmploy_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Update.updateEmploy());
+            MainWin.Title = "Изменить данные о сотруднике";
         }
     }
 }

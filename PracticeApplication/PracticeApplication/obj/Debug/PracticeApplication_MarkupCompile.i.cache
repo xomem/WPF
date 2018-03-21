@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\SOVAJJ\source\repos\PracticeApplication\PracticeApplication\App.xaml
-7993349863
+9-988954254
 2-891263790
-22-459284154
+25-1227769265
 16-1316837673
-Add\AddDepartment.xaml;Add\AddEmploy.xaml;Add\AddRoom.xaml;Find\SearchWindow.xaml;MainMenu.xaml;MainWindow.xaml;SimpleQueryResult.xaml;
+Add\AddDepartment.xaml;Add\AddEmploy.xaml;Add\AddPosition.xaml;Add\AddRoom.xaml;Find\SearchWindow.xaml;MainMenu.xaml;MainWindow.xaml;SimpleQueryResult.xaml;Update\updateEmploy.xaml;
 
-False
+True
 

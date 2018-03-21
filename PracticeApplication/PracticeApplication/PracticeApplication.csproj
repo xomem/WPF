@@ -75,9 +75,13 @@
     <Compile Include="Add\AddEmploy.xaml.cs">
       <DependentUpon>AddEmploy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\AddPosition.xaml.cs">
+      <DependentUpon>AddPosition.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Add\AddRoom.xaml.cs">
       <DependentUpon>AddRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Employer.cs" />
     <Compile Include="Find\SearchEngine.cs" />
     <Compile Include="Find\SearchWindow.xaml.cs">
       <DependentUpon>SearchWindow.xaml</DependentUpon>
@@ -90,11 +94,18 @@
     <Compile Include="SimpleQueryResult.xaml.cs">
       <DependentUpon>SimpleQueryResult.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Update\updateEmploy.xaml.cs">
+      <DependentUpon>updateEmploy.xaml</DependentUpon>
+    </Compile>
     <Page Include="Add\AddDepartment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Add\AddEmploy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Add\AddPosition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +142,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SimpleQueryResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Update\updateEmploy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

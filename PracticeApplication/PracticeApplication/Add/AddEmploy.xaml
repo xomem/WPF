@@ -41,15 +41,15 @@
             <TextBox x:Name="nameBox"
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Width="500" Margin="88,83,128,-6" Height="28" />
+                Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Margin="88,86,210,-2" Height="28" />
             <TextBox x:Name="srunameBox"
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Width="500" Margin="88,133,128,-56" Height="28" />
+                Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Margin="88,136,210,-53" Height="28" />
             <TextBox x:Name="patronymicBox"
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Width="500" Margin="88,180,128,-103" Height="28" />
+                Text="{Binding Patronymic, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Margin="88,184,210,-99" Height="28" />
 
 
 
@@ -110,5 +110,6 @@
         <Label Content="" HorizontalAlignment="Left" Margin="75,542,0,0" VerticalAlignment="Top" Width="349" Background="{x:Null}" Foreground="Red" Name="errorLabel" FontSize="16"/>
 
         <Button Cursor="Hand" Content="Добавить" HorizontalAlignment="Left" Margin="1076,545,0,0" VerticalAlignment="Top" Width="89" FontSize="18" Click="Button_Click"/>
+
     </Grid>
 </Page>
